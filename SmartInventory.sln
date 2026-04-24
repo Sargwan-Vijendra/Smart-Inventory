@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInventory.API", "SmartInventory.API\SmartInventory.API.csproj", "{F2EA29E2-388C-4585-804B-B64B403AB2B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInventory.Core", "SmartInventory.Core\SmartInventory.Core.csproj", "{5F166804-7597-43AE-A95A-94C7E71149CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInventory.Data", "SmartInventory.Data\SmartInventory.Data.csproj", "{9759532E-55AC-4514-ABB5-3456CF06ABB7}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "smartinventory.ui", "SmartInventory.UI\smartinventory.ui.esproj", "{EC509C26-5CBF-C3F8-1B09-1EFE3EB6204E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2EA29E2-388C-4585-804B-B64B403AB2B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2EA29E2-388C-4585-804B-B64B403AB2B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2EA29E2-388C-4585-804B-B64B403AB2B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2EA29E2-388C-4585-804B-B64B403AB2B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F166804-7597-43AE-A95A-94C7E71149CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F166804-7597-43AE-A95A-94C7E71149CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F166804-7597-43AE-A95A-94C7E71149CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F166804-7597-43AE-A95A-94C7E71149CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9759532E-55AC-4514-ABB5-3456CF06ABB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9759532E-55AC-4514-ABB5-3456CF06ABB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9759532E-55AC-4514-ABB5-3456CF06ABB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9759532E-55AC-4514-ABB5-3456CF06ABB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC509C26-5CBF-C3F8-1B09-1EFE3EB6204E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC509C26-5CBF-C3F8-1B09-1EFE3EB6204E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC509C26-5CBF-C3F8-1B09-1EFE3EB6204E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EC509C26-5CBF-C3F8-1B09-1EFE3EB6204E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC509C26-5CBF-C3F8-1B09-1EFE3EB6204E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC509C26-5CBF-C3F8-1B09-1EFE3EB6204E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39D70924-731C-41F0-AC3A-5A5066B3DA46}
+	EndGlobalSection
+EndGlobal

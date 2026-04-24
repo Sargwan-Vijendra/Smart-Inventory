@@ -1,0 +1,89 @@
+# =========================
+# Visual Studio / .NET
+# =========================
+.vs/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# .NET build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.nupkg
+*.snupkg
+
+# Rider / JetBrains
+.idea/
+
+# VS Code local settings
+.vscode/*
+!.vscode/extensions.json
+
+# =========================
+# ASP.NET Core local files
+# =========================
+#appsettings.Local.json
+#appsettings.*.Local.json
+#appsettings.Production.json
+#appsettings.Staging.json
+
+# User secrets / certificates
+*.pfx
+*.p12
+*.cer
+*.key
+*.pem
+
+# =========================
+# React / Vite / Node
+# =========================
+node_modules/
+dist/
+dist-ssr/
+build/
+coverage/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json.tmp
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.temp
+*.bak
+*.swp
