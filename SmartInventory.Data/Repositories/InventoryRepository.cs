@@ -40,6 +40,8 @@ namespace SmartInventory.Data.Repositories
             return new AdjustmentResponse(false, 0, false, "Failed to adjust stock.");
         }
 
+        
+
         public async Task<IEnumerable<StockLogViewDto>> GetLogsByProductIdAsync(int productId)
         {
             var logs = new List<StockLogViewDto>();
@@ -61,70 +63,56 @@ namespace SmartInventory.Data.Repositories
             return logs;
         }
 
-        public async Task<IEnumerable<LowStockDto>> GetLowStockReportAsync()
+        //public async Task<IEnumerable<LowStockDto>> GetLowStockReportAsync()
+        //{
+        //    var report = new List<LowStockDto>();
+        //    using var con = (SqlConnection)dbConnectionFactory.CreateConnection();
+        //    using var cmd = new SqlCommand("sp_GetLowStockReport", con) { CommandType = CommandType.StoredProcedure };
+
+        //    await con.OpenAsync();
+        //    using var reader = await cmd.ExecuteReaderAsync();
+        //    while (await reader.ReadAsync())
+        //    {
+        //        report.Add(new LowStockDto(
+        //            reader.GetInt32(0),
+        //            reader.GetString(1),
+        //            reader.GetString(2),
+        //            reader.GetInt32(3),
+        //            reader.GetInt32(4),
+        //            reader.GetString(5)
+        //        ));
+        //    }
+        //    return report;
+        //}
+
+        public async Task<LowStockDtoPagedResponseDto> GetLowStockReportAsync(int pageNumber, int pageSize)
         {
-            var report = new List<LowStockDto>();
+            var lowStocks = new List<LowStockDto>();
+            int totalCount = 0;
+
             using var con = (SqlConnection)dbConnectionFactory.CreateConnection();
             using var cmd = new SqlCommand("sp_GetLowStockReport", con) { CommandType = CommandType.StoredProcedure };
 
+            cmd.Parameters.AddWithValue("@PageNumber", pageNumber);
+            cmd.Parameters.AddWithValue("@PageSize", pageSize);
+
             await con.OpenAsync();
             using var reader = await cmd.ExecuteReaderAsync();
+
+            // Assume the SP returns two result sets: 1. The Data, 2. The Total Count
             while (await reader.ReadAsync())
             {
-                report.Add(new LowStockDto(
-                    reader.GetInt32(0),
-                    reader.GetString(1),
-                    reader.GetString(2),
-                    reader.GetInt32(3),
-                    reader.GetInt32(4),
-                    reader.GetString(5)
-                ));
+                lowStocks.Add(new LowStockDto(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5)));
             }
-            return report;
+
+            if (await reader.NextResultAsync() && await reader.ReadAsync())
+            {
+                totalCount = reader.GetInt32(0);
+            }
+
+            return new LowStockDtoPagedResponseDto(lowStocks, totalCount, pageNumber, pageSize);
         }
 
-        public async Task<DashboardDto> GetDashboardStatsAsync()
-        {
-            var stats = new DashboardDto();
-
-            using var con = (SqlConnection)dbConnectionFactory.CreateConnection();
-            using var cmd = new SqlCommand("sp_GetDashboardStats", con) { CommandType = CommandType.StoredProcedure };
-
-            await con.OpenAsync();
-            using var reader = await cmd.ExecuteReaderAsync();
-
-            // RESULT SET 1: Total Value & Low Stock Count
-            if (await reader.ReadAsync())
-            {
-                stats.TotalStockValue = reader.GetDecimal(0);
-                stats.LowStockCount = reader.GetInt32(1);
-            }
-
-            // RESULT SET 2: Top Moving Items
-            if (await reader.NextResultAsync())
-            {
-                while (await reader.ReadAsync())
-                {
-                    stats.TopMovingItems.Add(new TopMovingItemDto(
-                        reader.GetString(0),
-                        reader.GetInt32(1)
-                    ));
-                }
-            }
-
-            // RESULT SET 3: Stock by Category
-            if (await reader.NextResultAsync())
-            {
-                while (await reader.ReadAsync())
-                {
-                    stats.StockByCategory.Add(new CategoryStockDto(
-                        reader.GetString(0),
-                        reader.GetInt32(1)
-                    ));
-                }
-            }
-
-            return stats;
-        }
+        
     }
 }

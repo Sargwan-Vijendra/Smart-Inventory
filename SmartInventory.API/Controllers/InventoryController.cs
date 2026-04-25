@@ -46,11 +46,22 @@ namespace SmartInventory.API.Controllers
             return Ok(logs);
         }
 
-        [HttpGet("low-stock")]
-        public async Task<IActionResult> GetLowStock()
+        //[HttpGet("low-stock")]
+        //public async Task<IActionResult> GetLowStock()
+        //{
+        //    var report = await repository.GetLowStockReportAsync();
+        //    return Ok(report);
+        //}
+
+        [HttpGet]
+        public async Task<IActionResult> GetLowStock([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
-            var report = await repository.GetLowStockReportAsync();
-            return Ok(report);
+            // Enforce minimums to prevent API abuse
+            pageNumber = pageNumber < 1 ? 1 : pageNumber;
+            pageSize = pageSize < 1 ? 10 : pageSize;
+
+            var result = await repository.GetLowStockReportAsync(pageNumber, pageSize);
+            return Ok(result);
         }
     }
 

@@ -13,8 +13,9 @@ namespace SmartInventory.Data.Interfaces
         Task<AdjustmentResponse> AdjustStockAsync(StockAdjustmentRequest request);
         Task<IEnumerable<StockLogViewDto>> GetLogsByProductIdAsync(int productId);
 
-        Task<IEnumerable<LowStockDto>> GetLowStockReportAsync();
+        //Task<IEnumerable<LowStockDto>> GetLowStockReportAsync();
+        Task<LowStockDtoPagedResponseDto> GetLowStockReportAsync(int pageNumber, int pageSize);
 
-        Task<DashboardDto> GetDashboardStatsAsync();
+
     }
 }

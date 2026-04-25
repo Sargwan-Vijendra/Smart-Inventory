@@ -37,5 +37,13 @@ namespace SmartInventory.Core.DTOs
             int MinThreshold,
             string CategoryName
         );
+
+
+       public record LowStockDtoPagedResponseDto(
+       IEnumerable<LowStockDto> Items,
+       int TotalCount,
+       int PageNumber,
+       int PageSize
+   );
     }
 }

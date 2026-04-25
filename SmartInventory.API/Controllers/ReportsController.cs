@@ -7,14 +7,14 @@ namespace SmartInventory.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReportsController(IInventoryRepository repository, IReportRepository _reportRepository) : ControllerBase
+    public class ReportsController(IReportRepository _reportRepository) : ControllerBase
     {
         [HttpGet("dashboard")]
         public async Task<IActionResult> GetDashboardData()
         {
             try
             {
-                var data = await repository.GetDashboardStatsAsync();
+                var data = await _reportRepository.GetDashboardStatsAsync();
                 return Ok(data);
             }
             catch (Exception ex)

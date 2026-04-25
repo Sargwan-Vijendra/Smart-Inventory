@@ -10,5 +10,8 @@ namespace SmartInventory.Data.Interfaces
     public interface IReportRepository
     {
         Task<IEnumerable<ReorderItemDto>> GetItemsToReorderAsync(int supplierId);
+
+        Task<DashboardDto> GetDashboardStatsAsync();
+
     }
 }

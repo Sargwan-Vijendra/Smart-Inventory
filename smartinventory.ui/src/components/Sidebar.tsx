@@ -19,9 +19,10 @@ const Sidebar = () => {
         { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, visible: true },
         { name: 'Products', path: '/products', icon: Package, visible: true },
         { name: 'Categories', path: '/categories', icon: Tags, visible: true },
-        { name: 'Inventory', path: '/inventory', icon: ClipboardList, visible: true },
         // Hidden if user is not Admin
         { name: 'Suppliers', path: '/suppliers', icon: Truck, visible: role === 'Admin' },
+        { name: 'Inventory', path: '/inventory', icon: ClipboardList, visible: true },
+        
     ];
 
     return (

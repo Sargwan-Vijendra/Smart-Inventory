@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { authService } from '../api/authService';
 import { useAuthStore } from '../store/authStore';
 import { LogIn, ShieldCheck, AlertCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     // "useState" is how React remembers what you type in a textbox
@@ -85,6 +86,14 @@ const Login = () => {
                             <><LogIn size={20} className="mr-2" /> Sign In</>
                         )}
                     </button>
+
+                    {/* ADD THIS LINK BELOW */}
+                    <p className="text-center text-sm text-gray-500 mt-6">
+                        Don't have an account?{' '}
+                        <Link to="/register" className="text-blue-600 font-bold hover:underline">
+                            Create one now
+                        </Link>
+                    </p>
                 </form>
             </div>
         </div>
